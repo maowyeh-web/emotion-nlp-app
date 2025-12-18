@@ -8,10 +8,10 @@ st.set_page_config(
     layout="centered"
 )
 
-# ================== EMOJI BACKGROUND (SVG) ==================
+# ================== EMOJI SVG BACKGROUND ==================
 emoji_svg = """
 <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
-  <rect width='100%' height='100%' fill='#f1f5f9'/>
+  <rect width='100%' height='100%' fill='#000000'/>
   <text x='20' y='60' font-size='42'>😀 😢 😡 😱 ❤️</text>
   <text x='20' y='140' font-size='42'>😃 😞 😠 😨 💙</text>
   <text x='20' y='220' font-size='42'>🙂 😭 🤬 😰 💛</text>
@@ -31,18 +31,18 @@ st.markdown(
         background-size: 380px 380px;
     }}
 
-    /* طبقة ضبابية */
+    /* ضبابية خفيفة */
     .stApp::before {{
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
         z-index: -1;
     }}
 
-    /* كرت المحتوى */
+    /* الصناديق البيضاء */
     div[data-testid="stVerticalBlock"] > div {{
         background-color: #ffffff;
         padding: 2rem;
@@ -59,10 +59,9 @@ st.markdown(
         margin-bottom: 0.3rem;
     }}
 
-    /* الوصف */
-    p {{
-        color: #000000;
-        text-align: center;
+    /* النصوص */
+    p, label {{
+        color: #000000 !important;
         font-size: 16px;
     }}
 
