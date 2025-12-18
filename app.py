@@ -99,7 +99,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ================= INPUT CARD =================
+# ================= INPUT CARD (المربع الوحيد المتبقي تحت) =================
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
 text = st.text_area("✍️ اكتب الجملة هنا:")
