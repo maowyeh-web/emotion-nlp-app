@@ -1,17 +1,17 @@
 import streamlit as st
 import urllib.parse
 
-# ================== PAGE CONFIG ==================
+# ================= PAGE CONFIG =================
 st.set_page_config(
     page_title="Emotion Detection App",
     page_icon="🧠",
     layout="centered"
 )
 
-# ================== EMOJI SVG BACKGROUND ==================
+# ================= EMOJI BACKGROUND =================
 emoji_svg = """
 <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
-  <rect width='100%' height='100%' fill='#000000'/>
+  <rect width='100%' height='100%' fill='#000'/>
   <text x='20' y='60' font-size='42'>😀 😢 😡 😱 ❤️</text>
   <text x='20' y='140' font-size='42'>😃 😞 😠 😨 💙</text>
   <text x='20' y='220' font-size='42'>🙂 😭 🤬 😰 💛</text>
@@ -20,55 +20,57 @@ emoji_svg = """
 """
 emoji_bg = urllib.parse.quote(emoji_svg)
 
-# ================== STYLE ==================
+# ================= STYLE =================
 st.markdown(
     f"""
     <style>
-    /* خلفية الإيموجي */
+    /* خلفية الصفحة */
     .stApp {{
         background-image: url("data:image/svg+xml,{emoji_bg}");
         background-repeat: repeat;
-        background-size: 380px 380px;
+        background-size: 360px 360px;
     }}
 
-    /* ضبابية خفيفة */
+    /* طبقة ضبابية */
     .stApp::before {{
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(7px);
         z-index: -1;
     }}
 
-    /* الصناديق البيضاء */
-    div[data-testid="stVerticalBlock"] > div {{
-        background-color: #ffffff;
-        padding: 2rem;
-        border-radius: 22px;
-        box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-        margin-bottom: 1.5rem;
+    /* الصندوق الرئيسي */
+    .main-card {{
+        background: rgba(255,255,255,0.95);
+        padding: 2.5rem;
+        border-radius: 26px;
+        box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        max-width: 720px;
+        margin: auto;
     }}
 
     /* العنوان */
     h1 {{
-        color: #000000;
-        font-weight: 800;
+        color: #000;
+        font-weight: 900;
         text-align: center;
         margin-bottom: 0.3rem;
     }}
 
-    /* النصوص */
-    p, label {{
-        color: #000000 !important;
+    /* الوصف */
+    .subtitle {{
+        text-align: center;
+        color: #333;
         font-size: 16px;
+        margin-bottom: 2rem;
     }}
 
     /* مربع الإدخال */
     textarea {{
-        background-color: #ffffff !important;
-        color: #000000 !important;
+        background: #fff !important;
+        color: #000 !important;
         border-radius: 14px !important;
         border: 2px solid #2563eb !important;
         font-size: 16px !important;
@@ -76,28 +78,33 @@ st.markdown(
     }}
 
     textarea:focus {{
+        border-color: #1e40af !important;
+        box-shadow: 0 0 12px rgba(37,99,235,0.35) !important;
         outline: none !important;
-        border-color: #1d4ed8 !important;
-        box-shadow: 0 0 10px rgba(37,99,235,0.4) !important;
     }}
 
-    /* زر التحليل */
+    /* الزر */
     button[kind="primary"] {{
         background: linear-gradient(135deg, #2563eb, #1e40af) !important;
-        color: white !important;
         border-radius: 14px !important;
         font-size: 16px !important;
-        padding: 0.7rem 1.8rem !important;
+        padding: 0.8rem 2.2rem !important;
         font-weight: 600 !important;
+        margin-top: 1rem;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ================== APP ==================
+# ================= APP CONTENT =================
+st.markdown('<div class="main-card">', unsafe_allow_html=True)
+
 st.title("🧠 Emotion Detection App")
-st.write("AI-powered text emotion analysis using NLP")
+st.markdown(
+    '<div class="subtitle">AI-powered text emotion analysis using NLP</div>',
+    unsafe_allow_html=True
+)
 
 text = st.text_area("✍️ اكتب الجملة هنا:")
 
@@ -109,3 +116,5 @@ if st.button("Analyze Emotion", type="primary"):
         st.write("**النص المدخل:**")
         st.write(text)
         st.info("🔍 سيتم تحليل المشاعر بعد ربط المودل")
+
+st.markdown("</div>", unsafe_allow_html=True)
