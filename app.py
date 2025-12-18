@@ -27,7 +27,7 @@ st.markdown(
         height: 100vh;
         z-index: 0;
         pointer-events: none;
-        opacity: 0.10;
+        opacity: 0.18;
         font-size: 42px;
         line-height: 1.6;
         color: white;
@@ -158,3 +158,4 @@ if st.button("Analyze Emotion"):
         )
 
 st.markdown('</div>', unsafe_allow_html=True)
+
