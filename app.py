@@ -11,8 +11,33 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    /* ===== Background with Emojis ===== */
     .stApp {
         background-color: #000000;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .stApp::before {
+        content: "😀 😢 😡 😱 😍 😐 🙂 😭 😠 💙 💚 💛 🧠 😀 😢 😡 😱 😍 😐 🙂 😭 😠 💙 💚 💛 🧠";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        font-size: 48px;
+        line-height: 1.6;
+        opacity: 0.08;
+        color: white;
+        z-index: 0;
+        pointer-events: none;
+        white-space: pre-wrap;
+    }
+
+    /* ===== Main Content ===== */
+    .block-container {
+        position: relative;
+        z-index: 1;
     }
 
     .box {
@@ -74,7 +99,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ===================== Title Box =====================
+# ===================== Title =====================
 st.markdown(
     """
     <div class="box">
@@ -84,7 +109,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ===================== Subtitle Box =====================
+# ===================== Subtitle =====================
 st.markdown(
     """
     <div class="box">
@@ -96,7 +121,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ===================== Text Input =====================
+# ===================== Input =====================
 st.markdown('<div class="label-text">✍️ اكتب الجملة هنا:</div>', unsafe_allow_html=True)
 
 text = st.text_area(
@@ -105,7 +130,7 @@ text = st.text_area(
     placeholder="اكتب الجملة التي تريد تحليل مشاعرها..."
 )
 
-# ===================== Button =====================
+# ===================== Button & Result =====================
 if st.button("Analyze Emotion"):
     if text.strip() == "":
         st.warning("⚠️ الرجاء إدخال جملة أولاً")
