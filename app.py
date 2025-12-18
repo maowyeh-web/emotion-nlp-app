@@ -34,34 +34,31 @@ st.markdown(
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.7);
+        background: rgba(0,0,0,0.75);
         backdrop-filter: blur(6px);
         z-index: -1;
     }}
 
-    /* الصندوق الوحيد */
     .card {{
-        background: rgba(255,255,255,0.94);
-        padding: 2.5rem 2.5rem 2.8rem;
-        border-radius: 30px;
-        box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+        background: rgba(255,255,255,0.92);
+        padding: 2rem;
+        border-radius: 28px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.45);
         max-width: 720px;
-        margin: 3rem auto;
+        margin: 1.8rem auto;
     }}
 
     .title {{
-        font-size: 42px;
+        font-size: 40px;
         font-weight: 900;
         text-align: center;
         color: #000;
-        margin-bottom: 0.3rem;
     }}
 
     .subtitle {{
         text-align: center;
         font-size: 16px;
-        color: #222;
-        margin-bottom: 2rem;
+        color: #111;
     }}
 
     textarea {{
@@ -86,14 +83,24 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================= CARD START =================
-st.markdown('<div class="card">', unsafe_allow_html=True)
+# ================= TITLE CARD =================
+st.markdown("""
+<div class="card">
+    <div class="title">🧠 Emotion Detection App</div>
+</div>
+""", unsafe_allow_html=True)
 
-st.markdown('<div class="title">🧠 Emotion Detection App</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="subtitle">AI-powered text emotion analysis using NLP</div>',
-    unsafe_allow_html=True
-)
+# ================= SUBTITLE CARD =================
+st.markdown("""
+<div class="card">
+    <div class="subtitle">
+        AI-powered text emotion analysis using NLP
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ================= INPUT CARD =================
+st.markdown('<div class="card">', unsafe_allow_html=True)
 
 text = st.text_area("✍️ اكتب الجملة هنا:")
 
@@ -107,4 +114,3 @@ if st.button("Analyze Emotion", type="primary"):
         st.info("🔍 سيتم تحليل المشاعر بعد ربط المودل")
 
 st.markdown("</div>", unsafe_allow_html=True)
-# ================= CARD END =================
