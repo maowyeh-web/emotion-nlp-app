@@ -1,118 +1,121 @@
 import streamlit as st
 
-# ================== PAGE CONFIG ==================
+# ===================== Page Config =====================
 st.set_page_config(
     page_title="Emotion Detection App",
     page_icon="🧠",
     layout="centered"
 )
 
-# ================== EMOJI BACKGROUND ==================
+# ===================== Custom CSS =====================
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: black;
-    }
-
-    .emoji-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        font-size: 34px;
-        line-height: 60px;
-        opacity: 0.25;
-        white-space: pre-wrap;
-        color: white;
-        padding: 20px;
+        background-color: #000000;
     }
 
     .box {
-        background: rgba(255,255,255,0.93);
+        background-color: #f2f2f2;
         padding: 25px;
-        border-radius: 20px;
+        border-radius: 25px;
         margin-bottom: 25px;
         text-align: center;
     }
 
-    .title {
-        font-size: 40px;
+    .title-text {
+        font-size: 36px;
         font-weight: bold;
-        color: black;
+        color: #000000;
     }
 
-    .subtitle {
+    .subtitle-text {
         font-size: 18px;
-        color: #333;
+        color: #111827;
     }
 
-    label {
-        color: white !important;
-        font-size: 18px !important;
-        font-weight: bold;
+    .label-text {
+        color: #ffffff;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .success-box {
+        background-color: #14532d;
+        color: #bbf7d0;
+        padding: 18px;
+        border-radius: 15px;
+        margin-top: 20px;
+        font-size: 16px;
     }
 
     textarea {
-        background-color: white !important;
-        color: black !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
         border-radius: 15px !important;
-        border: 3px solid #2563eb !important;
         font-size: 16px !important;
     }
 
-    button[kind="primary"] {
-        background: #2563eb !important;
-        color: white !important;
-        border-radius: 14px !important;
-        font-size: 18px !important;
-        padding: 10px 25px !important;
+    .stButton>button {
+        background-color: #1d4ed8;
+        color: white;
+        border-radius: 15px;
+        padding: 10px 30px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .stButton>button:hover {
+        background-color: #2563eb;
+        color: white;
     }
     </style>
+    """,
+    unsafe_allow_html=True
+)
 
-    <div class="emoji-bg">
-    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
-    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
-    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
-    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
-    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+# ===================== Title Box =====================
+st.markdown(
+    """
+    <div class="box">
+        <span class="title-text">🧠 Emotion Detection App</span>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# ================== TITLE ==================
+# ===================== Subtitle Box =====================
 st.markdown(
     """
     <div class="box">
-        <div class="title">🧠 Emotion Detection App</div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# ================== SUBTITLE ==================
-st.markdown(
-    """
-    <div class="box">
-        <div class="subtitle">
+        <span class="subtitle-text">
             AI-powered text emotion analysis using NLP
-        </div>
+        </span>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-# ================== INPUT ==================
-text = st.text_area("✍️ اكتب الجملة هنا:")
+# ===================== Text Input =====================
+st.markdown('<div class="label-text">✍️ اكتب الجملة هنا:</div>', unsafe_allow_html=True)
 
-# ================== BUTTON ==================
+text = st.text_area(
+    "",
+    height=120,
+    placeholder="اكتب الجملة التي تريد تحليل مشاعرها..."
+)
+
+# ===================== Button =====================
 if st.button("Analyze Emotion"):
     if text.strip() == "":
-        st.warning("⚠️ الرجاء إدخال نص أولًا")
+        st.warning("⚠️ الرجاء إدخال جملة أولاً")
     else:
-        st.success("✅ تم استلام الجملة بنجاح")
-        st.write("**النص المدخل:**")
-        st.write(text)
+        st.markdown(
+            """
+            <div class="success-box">
+                ✅ تم استلام الجملة بنجاح<br>
+                🔍 سيتم تحليل المشاعر بعد ربط النموذج
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
