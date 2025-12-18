@@ -7,25 +7,25 @@ st.set_page_config(
     layout="centered"
 )
 
-# ================= STYLE =================
+# ================= GLOBAL STYLE =================
 st.markdown("""
 <style>
 
-/* ===== EMOJI BACKGROUND ===== */
+/* ===== BACKGROUND ===== */
 .stApp {
-    background-color: #000;
+    background-color: #000000;
     position: relative;
     overflow-x: hidden;
 }
 
-/* طبقة الإيموجي */
+/* ===== EMOJI LAYER ===== */
 .stApp::before {
     content: "😀 😢 😡 😍 😱 💙 😊 😔 😤 😲 💛 😭 😠 😌 😕 💚 😄 😞 😠 😮 💙";
     position: fixed;
     top: 0;
     left: 0;
-    width: 200%;
-    height: 200%;
+    width: 220%;
+    height: 220%;
     font-size: 48px;
     line-height: 1.6;
     opacity: 0.18;
@@ -34,32 +34,32 @@ st.markdown("""
     white-space: pre-wrap;
 }
 
-/* ===== GLASS BOX ===== */
-.glass-box {
-    background: rgba(255, 255, 255, 0.88);
+/* ===== GLASS CONTAINER ===== */
+.glass {
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(6px);
-    border-radius: 28px;
+    border-radius: 30px;
     padding: 28px;
     margin-bottom: 26px;
     text-align: center;
 }
 
 /* ===== TITLE ===== */
-.app-title {
+.title {
     font-size: 42px;
     font-weight: 800;
     color: #000000;
 }
 
 /* ===== SUBTITLE ===== */
-.app-subtitle {
+.subtitle {
     font-size: 18px;
     color: #111827;
 }
 
 /* ===== LABEL ===== */
 .label {
-    color: #ffffff;
+    color: white;
     font-weight: 700;
     margin-bottom: 8px;
 }
@@ -68,7 +68,7 @@ st.markdown("""
 textarea {
     background-color: #ffffff !important;
     color: #000000 !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
     border: 3px solid #2563eb !important;
     font-size: 16px !important;
 }
@@ -77,7 +77,7 @@ textarea {
 button[kind="primary"] {
     background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
     color: white !important;
-    border-radius: 20px !important;
+    border-radius: 22px !important;
     font-size: 18px !important;
     font-weight: 700 !important;
     padding: 14px 36px !important;
@@ -105,17 +105,17 @@ div[data-testid="stAlert"] svg {
 </style>
 """, unsafe_allow_html=True)
 
-# ================= TITLE =================
+# ================= TITLE BOX =================
 st.markdown("""
-<div class="glass-box">
-    <div class="app-title">🧠 Emotion Detection App</div>
+<div class="glass">
+    <div class="title">🧠 Emotion Detection App</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ================= SUBTITLE =================
+# ================= SUBTITLE BOX =================
 st.markdown("""
-<div class="glass-box">
-    <div class="app-subtitle">
+<div class="glass">
+    <div class="subtitle">
         AI-powered text emotion analysis using NLP
     </div>
 </div>
