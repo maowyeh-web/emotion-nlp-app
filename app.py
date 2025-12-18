@@ -5,31 +5,32 @@ st.set_page_config(
     layout="centered"
 )
 
-# ================= BACKGROUND + STYLE =================
+# ===================== STYLE & BACKGROUND =====================
 st.markdown("""
 <style>
-/* خلفية الإيموجي */
+
+/* خلفية الإيموجي (نفس الشكل بالصورة) */
 .stApp {
     background-color: black;
-    background-image: url("https://i.imgur.com/2Jg9YQp.png");
-    background-size: 220px;
+    background-image: url("https://i.imgur.com/0Z8FQYB.png");
     background-repeat: repeat;
+    background-size: 180px;
 }
 
-/* صندوق موحّد */
+/* صندوق موحد */
 .box {
     background: rgba(255, 255, 255, 0.92);
-    padding: 25px;
-    border-radius: 22px;
-    margin: 25px auto;
-    max-width: 750px;
+    padding: 26px;
+    border-radius: 24px;
+    margin: 28px auto;
+    max-width: 780px;
 }
 
-/* العنوان الرئيسي */
+/* العنوان */
 .title {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 800;
-    color: black;
+    color: #000;
     text-align: center;
 }
 
@@ -44,38 +45,40 @@ st.markdown("""
 .input-title {
     font-size: 18px;
     font-weight: 700;
-    color: black;
+    color: #000;
     text-align: right;
     margin-bottom: 10px;
 }
 
-/* textarea */
+/* مربع الإدخال */
 textarea {
-    background-color: white !important;
-    color: black !important;
-    border-radius: 14px !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 16px !important;
+    font-size: 16px !important;
 }
 
-/* زر */
+/* زر التحليل */
 .stButton>button {
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: white;
     font-size: 16px;
-    padding: 10px 35px;
-    border-radius: 14px;
+    padding: 10px 36px;
+    border-radius: 16px;
     border: none;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
-# ================= TITLE BOX =================
+# ===================== TITLE BOX =====================
 st.markdown("""
 <div class="box">
     <div class="title">🧠 Emotion Detection App</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ================= SUBTITLE BOX =================
+# ===================== SUBTITLE BOX =====================
 st.markdown("""
 <div class="box">
     <div class="subtitle">
@@ -84,16 +87,16 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ================= INPUT BOX (WITH TITLE INSIDE) =================
+# ===================== INPUT BOX (NO EXTRA BOX) =====================
 st.markdown("""
 <div class="box">
     <div class="input-title">✍️ اكتب الجملة هنا:</div>
 </div>
 """, unsafe_allow_html=True)
 
-text = st.text_area("", height=130)
+text = st.text_area("", height=140)
 
-# ================= BUTTON =================
+# ===================== BUTTON & RESULT =====================
 if st.button("Analyze Emotion"):
     if text.strip() == "":
         st.warning("⚠️ الرجاء إدخال نص")
