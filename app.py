@@ -7,18 +7,31 @@ st.set_page_config(
     layout="centered"
 )
 
-# ================== BACKGROUND + STYLE ==================
+# ================== EMOJI BACKGROUND ==================
 st.markdown(
     """
     <style>
     .stApp {
         background-color: black;
-        background-image: url("https://i.imgur.com/4NJlF0P.png");
-        background-repeat: repeat;
+    }
+
+    .emoji-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        font-size: 34px;
+        line-height: 60px;
+        opacity: 0.25;
+        white-space: pre-wrap;
+        color: white;
+        padding: 20px;
     }
 
     .box {
-        background: rgba(255,255,255,0.92);
+        background: rgba(255,255,255,0.93);
         padding: 25px;
         border-radius: 20px;
         margin-bottom: 25px;
@@ -58,11 +71,19 @@ st.markdown(
         padding: 10px 25px !important;
     }
     </style>
+
+    <div class="emoji-bg">
+    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+    😀 😢 😡 😱 ❤️ 🙂 😭 😍 😠 😮 💙 😁 😞 😤 😨 💛
+    </div>
     """,
     unsafe_allow_html=True
 )
 
-# ================== TITLE BOX ==================
+# ================== TITLE ==================
 st.markdown(
     """
     <div class="box">
@@ -72,7 +93,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================== SUBTITLE BOX ==================
+# ================== SUBTITLE ==================
 st.markdown(
     """
     <div class="box">
@@ -84,7 +105,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================== TEXT INPUT ==================
+# ================== INPUT ==================
 text = st.text_area("✍️ اكتب الجملة هنا:")
 
 # ================== BUTTON ==================
