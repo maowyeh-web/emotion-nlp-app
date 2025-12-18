@@ -1,120 +1,100 @@
 import streamlit as st
 
-# ================= PAGE CONFIG =================
-st.set_page_config(
-    page_title="Emotion Detection App",
-    page_icon="🧠",
-    layout="centered"
-)
+st.set_page_config(page_title="Emotion Detection App", layout="centered")
 
-# ================= STYLE =================
+# ===================== BACKGROUND + GLOBAL STYLE =====================
 st.markdown("""
 <style>
-
-/* ===== BASE ===== */
+/* الخلفية */
 .stApp {
-    background: black;
-    color: white;
+    background-color: black;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 20%);
+    background-size: cover;
 }
 
-/* ===== EMOJI BACKGROUND ===== */
-.stApp::before {
-    content: "😀 😢 😡 😍 😱 💙 😊 😔 😤 😲 💛 😭 😠 😌 😕 💚 😄 😞 😠 😮 💙";
-    position: fixed;
-    inset: 0;
-    font-size: 40px;
-    opacity: 0.12;
-    filter: blur(2px);
-    z-index: -1;
-    line-height: 1.6;
-    white-space: pre-wrap;
+/* صندوق عام */
+.box {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 22px;
+    margin: 25px auto;
+    max-width: 750px;
+    text-align: center;
 }
 
-/* ===== CARD ===== */
-.card {
-    background: rgba(255,255,255,0.95);
-    color: black;
-    border-radius: 24px;
-    padding: 28px;
-    margin: 24px 0;
-}
-
-/* ===== TITLE ===== */
+/* عنوان */
 .title {
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 800;
-    text-align: center;
+    color: black;
 }
 
-/* ===== SUBTITLE ===== */
+/* وصف */
 .subtitle {
-    text-align: center;
-    font-size: 17px;
-    color: #1f2937;
+    font-size: 18px;
+    color: #222;
 }
 
-/* ===== TEXT AREA ===== */
-textarea {
-    background: white !important;
-    color: black !important;
-    border-radius: 16px !important;
-    border: 2px solid #2563eb !important;
-    font-size: 16px !important;
-}
-
-/* ===== BUTTON ===== */
-button[kind="primary"] {
-    background: #2563eb !important;
-    color: white !important;
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    border-radius: 18px !important;
-    padding: 12px 30px !important;
-}
-
-/* ===== SUCCESS ===== */
-div[data-testid="stAlert"] {
-    border-radius: 16px !important;
+/* عنوان الإدخال */
+.input-title {
+    font-size: 18px;
     font-weight: 700;
+    text-align: right;
+    color: black;
+    margin-bottom: 10px;
 }
 
+/* زر */
+.stButton>button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+}
+
+/* مربع النص */
+textarea {
+    background-color: white !important;
+    color: black !important;
+    border-radius: 12px !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
-# ================= CONTENT =================
-
-# TITLE
+# ===================== TITLE BOX =====================
 st.markdown("""
-<div class="card">
+<div class="box">
     <div class="title">🧠 Emotion Detection App</div>
 </div>
 """, unsafe_allow_html=True)
 
-# SUBTITLE
+# ===================== SUBTITLE BOX =====================
 st.markdown("""
-<div class="card">
+<div class="box">
     <div class="subtitle">
         AI-powered text emotion analysis using NLP
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# INPUT
+# ===================== INPUT BOX (WITH TITLE INSIDE) =====================
 st.markdown("""
-<div class="card">
-    <b>✍️ اكتب الجملة هنا:</b>
+<div class="box">
+    <div class="input-title">✍️ اكتب الجملة هنا:</div>
 </div>
 """, unsafe_allow_html=True)
 
-text = st.text_area(
-    "",
-    placeholder="اكتب شعورك أو جملة تعبّر عن إحساسك..."
-)
+text = st.text_area("", height=120)
 
-# BUTTON
+# ===================== BUTTON =====================
 if st.button("Analyze Emotion"):
     if text.strip() == "":
-        st.warning("⚠️ الرجاء إدخال جملة")
+        st.warning("⚠️ الرجاء إدخال نص")
     else:
         st.success("✅ تم استلام الجملة بنجاح")
-        st.info(f"🔍 النص المدخل:\n{text}")
+        st.info("🔍 سيتم تحليل المشاعر بعد ربط المودل")
+
