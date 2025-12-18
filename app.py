@@ -11,81 +11,70 @@ st.set_page_config(
 # ================= EMOJI BACKGROUND =================
 emoji_svg = """
 <svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
-  <rect width='100%' height='100%' fill='#000'/>
+  <rect width='100%' height='100%' fill='black'/>
   <text x='20' y='60' font-size='42'>😀 😢 😡 😱 ❤️</text>
   <text x='20' y='140' font-size='42'>😃 😞 😠 😨 💙</text>
   <text x='20' y='220' font-size='42'>🙂 😭 🤬 😰 💛</text>
   <text x='20' y='300' font-size='42'>😊 😔 😤 😳 💚</text>
 </svg>
 """
-emoji_bg = urllib.parse.quote(emoji_svg)
+bg = urllib.parse.quote(emoji_svg)
 
 # ================= STYLE =================
 st.markdown(
     f"""
     <style>
-    /* خلفية الصفحة */
     .stApp {{
-        background-image: url("data:image/svg+xml,{emoji_bg}");
+        background-image: url("data:image/svg+xml,{bg}");
         background-repeat: repeat;
         background-size: 360px 360px;
     }}
 
-    /* طبقة ضبابية */
     .stApp::before {{
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.65);
+        background: rgba(0,0,0,0.7);
         backdrop-filter: blur(6px);
         z-index: -1;
     }}
 
-    /* الصندوق الرئيسي (واحد فقط) */
-    .main-card {{
-        background: rgba(255,255,255,0.93);
-        padding: 2.8rem 2.5rem;
-        border-radius: 28px;
-        box-shadow: 0 25px 55px rgba(0,0,0,0.35);
+    /* الصندوق الوحيد */
+    .card {{
+        background: rgba(255,255,255,0.94);
+        padding: 2.5rem 2.5rem 2.8rem;
+        border-radius: 30px;
+        box-shadow: 0 30px 70px rgba(0,0,0,0.45);
         max-width: 720px;
         margin: 3rem auto;
     }}
 
-    /* العنوان داخل الصندوق */
-    .app-title {{
+    .title {{
         font-size: 42px;
         font-weight: 900;
         text-align: center;
         color: #000;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.3rem;
     }}
 
     .subtitle {{
         text-align: center;
-        color: #222;
         font-size: 16px;
+        color: #222;
         margin-bottom: 2rem;
     }}
 
-    /* مربع الإدخال (نفس الشفافية) */
     textarea {{
-        background: rgba(255,255,255,0.95) !important;
-        color: #000 !important;
+        background: white !important;
+        color: black !important;
         border-radius: 16px !important;
         border: 2px solid #2563eb !important;
         font-size: 16px !important;
         padding: 16px !important;
     }}
 
-    textarea:focus {{
-        border-color: #1e40af !important;
-        box-shadow: 0 0 14px rgba(37,99,235,0.45) !important;
-        outline: none !important;
-    }}
-
-    /* الزر */
     button[kind="primary"] {{
-        background: linear-gradient(135deg, #2563eb, #1e40af) !important;
+        background: linear-gradient(135deg,#2563eb,#1e40af) !important;
         border-radius: 16px !important;
         font-size: 17px !important;
         padding: 0.9rem 2.6rem !important;
@@ -97,10 +86,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================= APP CONTENT =================
-st.markdown('<div class="main-card">', unsafe_allow_html=True)
+# ================= CARD START =================
+st.markdown('<div class="card">', unsafe_allow_html=True)
 
-st.markdown('<div class="app-title">🧠 Emotion Detection App</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">🧠 Emotion Detection App</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="subtitle">AI-powered text emotion analysis using NLP</div>',
     unsafe_allow_html=True
@@ -118,3 +107,4 @@ if st.button("Analyze Emotion", type="primary"):
         st.info("🔍 سيتم تحليل المشاعر بعد ربط المودل")
 
 st.markdown("</div>", unsafe_allow_html=True)
+# ================= CARD END =================
