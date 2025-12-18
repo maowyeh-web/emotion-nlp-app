@@ -36,61 +36,61 @@ st.markdown(
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(255,255,255,0.85);
-        backdrop-filter: blur(7px);
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(6px);
         z-index: -1;
     }}
 
-    /* الصندوق الرئيسي */
+    /* الصندوق الرئيسي (واحد فقط) */
     .main-card {{
-        background: rgba(255,255,255,0.95);
-        padding: 2.5rem;
-        border-radius: 26px;
-        box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        background: rgba(255,255,255,0.93);
+        padding: 2.8rem 2.5rem;
+        border-radius: 28px;
+        box-shadow: 0 25px 55px rgba(0,0,0,0.35);
         max-width: 720px;
-        margin: auto;
+        margin: 3rem auto;
     }}
 
-    /* العنوان */
-    h1 {{
-        color: #000;
+    /* العنوان داخل الصندوق */
+    .app-title {{
+        font-size: 42px;
         font-weight: 900;
         text-align: center;
-        margin-bottom: 0.3rem;
+        color: #000;
+        margin-bottom: 0.4rem;
     }}
 
-    /* الوصف */
     .subtitle {{
         text-align: center;
-        color: #333;
+        color: #222;
         font-size: 16px;
         margin-bottom: 2rem;
     }}
 
-    /* مربع الإدخال */
+    /* مربع الإدخال (نفس الشفافية) */
     textarea {{
-        background: #fff !important;
+        background: rgba(255,255,255,0.95) !important;
         color: #000 !important;
-        border-radius: 14px !important;
+        border-radius: 16px !important;
         border: 2px solid #2563eb !important;
         font-size: 16px !important;
-        padding: 14px !important;
+        padding: 16px !important;
     }}
 
     textarea:focus {{
         border-color: #1e40af !important;
-        box-shadow: 0 0 12px rgba(37,99,235,0.35) !important;
+        box-shadow: 0 0 14px rgba(37,99,235,0.45) !important;
         outline: none !important;
     }}
 
     /* الزر */
     button[kind="primary"] {{
         background: linear-gradient(135deg, #2563eb, #1e40af) !important;
-        border-radius: 14px !important;
-        font-size: 16px !important;
-        padding: 0.8rem 2.2rem !important;
-        font-weight: 600 !important;
-        margin-top: 1rem;
+        border-radius: 16px !important;
+        font-size: 17px !important;
+        padding: 0.9rem 2.6rem !important;
+        font-weight: 700 !important;
+        margin-top: 1.2rem;
     }}
     </style>
     """,
@@ -100,7 +100,7 @@ st.markdown(
 # ================= APP CONTENT =================
 st.markdown('<div class="main-card">', unsafe_allow_html=True)
 
-st.title("🧠 Emotion Detection App")
+st.markdown('<div class="app-title">🧠 Emotion Detection App</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="subtitle">AI-powered text emotion analysis using NLP</div>',
     unsafe_allow_html=True
