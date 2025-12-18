@@ -7,128 +7,114 @@ st.set_page_config(
     layout="centered"
 )
 
-# ================= GLOBAL STYLE =================
+# ================= STYLE =================
 st.markdown("""
 <style>
 
-/* ===== BACKGROUND ===== */
+/* ===== BASE ===== */
 .stApp {
-    background-color: #000000;
-    position: relative;
-    overflow-x: hidden;
+    background: black;
+    color: white;
 }
 
-/* ===== EMOJI LAYER ===== */
+/* ===== EMOJI BACKGROUND ===== */
 .stApp::before {
     content: "😀 😢 😡 😍 😱 💙 😊 😔 😤 😲 💛 😭 😠 😌 😕 💚 😄 😞 😠 😮 💙";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 220%;
-    height: 220%;
-    font-size: 48px;
-    line-height: 1.6;
-    opacity: 0.18;
-    filter: blur(1.5px);
+    inset: 0;
+    font-size: 40px;
+    opacity: 0.12;
+    filter: blur(2px);
     z-index: -1;
+    line-height: 1.6;
     white-space: pre-wrap;
 }
 
-/* ===== GLASS CONTAINER ===== */
-.glass {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(6px);
-    border-radius: 30px;
+/* ===== CARD ===== */
+.card {
+    background: rgba(255,255,255,0.95);
+    color: black;
+    border-radius: 24px;
     padding: 28px;
-    margin-bottom: 26px;
-    text-align: center;
+    margin: 24px 0;
 }
 
 /* ===== TITLE ===== */
 .title {
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 800;
-    color: #000000;
+    text-align: center;
 }
 
 /* ===== SUBTITLE ===== */
 .subtitle {
-    font-size: 18px;
-    color: #111827;
-}
-
-/* ===== LABEL ===== */
-.label {
-    color: white;
-    font-weight: 700;
-    margin-bottom: 8px;
+    text-align: center;
+    font-size: 17px;
+    color: #1f2937;
 }
 
 /* ===== TEXT AREA ===== */
 textarea {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border-radius: 20px !important;
-    border: 3px solid #2563eb !important;
+    background: white !important;
+    color: black !important;
+    border-radius: 16px !important;
+    border: 2px solid #2563eb !important;
     font-size: 16px !important;
 }
 
 /* ===== BUTTON ===== */
 button[kind="primary"] {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    background: #2563eb !important;
     color: white !important;
-    border-radius: 22px !important;
     font-size: 18px !important;
     font-weight: 700 !important;
-    padding: 14px 36px !important;
-    box-shadow: 0 0 30px rgba(59,130,246,0.9);
-}
-
-button[kind="primary"]:hover {
-    background: linear-gradient(135deg, #1e40af, #2563eb) !important;
+    border-radius: 18px !important;
+    padding: 12px 30px !important;
 }
 
 /* ===== SUCCESS ===== */
-div[data-testid="stAlert"][role="alert"] {
-    background: linear-gradient(135deg, #16a34a, #22c55e) !important;
-    color: white !important;
-    font-weight: 800 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 0 28px rgba(34,197,94,0.9);
-}
-
-/* ===== INFO ===== */
-div[data-testid="stAlert"] svg {
-    color: white !important;
+div[data-testid="stAlert"] {
+    border-radius: 16px !important;
+    font-weight: 700;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ================= TITLE BOX =================
+# ================= CONTENT =================
+
+# TITLE
 st.markdown("""
-<div class="glass">
+<div class="card">
     <div class="title">🧠 Emotion Detection App</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ================= SUBTITLE BOX =================
+# SUBTITLE
 st.markdown("""
-<div class="glass">
+<div class="card">
     <div class="subtitle">
         AI-powered text emotion analysis using NLP
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# ================= INPUT =================
-st.markdown('<div class="label">✍️ اكتب الجملة هنا:</div>', unsafe_allow_html=True)
-text = st.text_area("", placeholder="اكتب شعورك أو جملة تعبّر عن إحساسك...")
+# INPUT
+st.markdown("""
+<div class="card">
+    <b>✍️ اكتب الجملة هنا:</b>
+</div>
+""", unsafe_allow_html=True)
 
-# ================= BUTTON =================
+text = st.text_area(
+    "",
+    placeholder="اكتب شعورك أو جملة تعبّر عن إحساسك..."
+)
+
+# BUTTON
 if st.button("Analyze Emotion"):
     if text.strip() == "":
         st.warning("⚠️ الرجاء إدخال جملة")
     else:
         st.success("✅ تم استلام الجملة بنجاح")
-        st.info(f"🔍 سيتم تحليل المشاعر للنص:\n\n{text}")
+        st.info(f"🔍 النص المدخل:\n{text}")
