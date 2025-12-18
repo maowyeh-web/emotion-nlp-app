@@ -11,30 +11,29 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* الخلفية مع صورة + ضبابية */
+    /* خلفية تدرج لوني عصبي */
     .stApp {
-        background-image: url("emotions_bg.jpg");
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, #0f172a, #1e293b, #312e81);
         background-attachment: fixed;
     }
 
+    /* طبقة ضبابية خفيفة */
     .stApp::before {
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         z-index: -1;
     }
 
-    /* الصناديق */
+    /* كرت أبيض للمحتوى */
     div[data-testid="stVerticalBlock"] > div {
         background-color: #ffffff;
         padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border-radius: 22px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.2);
         margin-bottom: 1.5rem;
     }
 
@@ -43,11 +42,13 @@ st.markdown(
         color: #000000;
         font-weight: 800;
         text-align: center;
+        margin-bottom: 0.3rem;
     }
 
-    /* النص */
-    p, label {
-        color: #000000 !important;
+    /* الوصف */
+    p {
+        color: #000000;
+        text-align: center;
         font-size: 16px;
     }
 
@@ -63,13 +64,13 @@ st.markdown(
 
     textarea:focus {
         outline: none !important;
-        border-color: #1e40af !important;
+        border-color: #1d4ed8 !important;
         box-shadow: 0 0 10px rgba(37,99,235,0.4) !important;
     }
 
-    /* الزر */
+    /* زر التحليل */
     button[kind="primary"] {
-        background-color: #2563eb !important;
+        background: linear-gradient(135deg, #2563eb, #1e40af) !important;
         color: white !important;
         border-radius: 14px !important;
         font-size: 16px !important;
